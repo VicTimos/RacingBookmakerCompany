@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>RBC: new</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}"/>
+    <script th:src="@{/command-dispatcher.js}" type="text/javascript"></script>
+</head>
+<body>
+<form id="form" th:action="@{/command}" method="POST" th:object="${dto}">
+    <input type="hidden" name="command" th:field="*{command}"/>
+    <input type="hidden" name="subCommand" th:field="*{subCommand}"/>
+    <div th:class="partition-container">
+        <div th:class="partition-25">
+            <nav th:class="left-navbar">
+                <div th:class="user-icon">
+                    <img alt="User default icon" width="50%" height="50%" th:src="@{/images/user_def.svg}"/>
+                </div>
+                <th:block th:each="items : *{params['menu']}">
+                    <th:block th:each="item : ${items}" th:with="val = ${item?.value}">
+                        <div th:if="${val?.isVisible}" th:attr="name=${item?.key}" th:text="${val?.value}"
+                             th:onclick="'javascript:onSubmit(this)'"
+                             th:class="${val?.isClicked} ? nav-button-clicked : nav-button"></div>
+                    </th:block>
+                </th:block>
+            </nav>
+        </div>
+        <div th:class="partition-75">
+            <div class="first-color partition-block"
+                 th:text="*{params['title']}"></div>
+            <table style="border-spacing: 10px">
+                <tr th:each="field : *{params[__*{command}__]}">
+                        <td th:text="${field?.name}"></td>
+                        <td><input type="text" th:name="${field?.nameAsKey}"
+                                   th:value="*{params[__${field?.nameAsKey}__]}"/></td>
+                </tr>
+                <tr><input type="submit" th:attr="data-command=*{command},data-sub-command='ADD_PROCESS'"
+                           onClick="onSubmit(this)" value="Submit"/></tr>
+            </table>
+        </div>
+    </div>
+</form>
+</body>
+</html>

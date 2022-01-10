@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>RBC: Personal Cabinet</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}"/>
+    <script type="text/javascript" th:src="@{/command-dispatcher.js}"></script>
+</head>
+<body>
+<form id="form" th:action="@{/command}" method="POST" th:object="${dto}">
+    <input type="hidden" name="command" th:field="*{command}"/>
+    <input type="hidden" name="subCommand" th:field="*{subCommand}"/>
+    <div th:class="partition-container">
+        <div th:class="partition-25">
+            <nav th:class="left-navbar">
+                <div th:class="user-icon">
+                    <img alt="User default icon" width="25%" height="25%" th:src="@{/images/user_def.svg}"/>
+                </div>
+                <div></div>
+                <th:block th:each="items : *{params['menu']}">
+                    <th:block th:each="item : ${items}" th:with="val = ${item?.value}">
+                        <div th:if="${val?.isVisible}" th:attr="data-command=${item?.key},data-sub-command='VIEW'" th:text="${val?.value}"
+                             th:onclick="'javascript:onSubmit(this)'"
+                             th:class="${val?.isClicked} ? nav-button-clicked : nav-button"></div>
+                    </th:block>
+                </th:block>
+            </nav>
+        </div>
+        <div th:class="partition-75">
+            <table th:class="center-content">
+                <tbody>
+                <tr>
+                    <td>
+                        <div>
+                            <h3>Hello,
+                                <span th:text="'' + *{params['currentUser']?.name} + '!'"></span>
+                            </h3>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+</body>
+</html>

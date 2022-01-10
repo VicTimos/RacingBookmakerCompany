@@ -1,0 +1,33 @@
+{
+  "entities": [
+    {
+      "className": "Racing",
+      "fields": [
+        {
+          "field": "id",
+          "text": "Identificator"
+        },
+        {
+          "field": "name",
+          "text": "Name"
+        },
+        {
+          "field": "description",
+          "text": "Description"
+        },
+        {
+          "field": "start",
+          "text": "Starts"
+        },
+        {
+          "field": "longsFor",
+          "text": "Longs for"
+        },
+        {
+          "field": "image",
+          "text": "Image"
+        }
+      ]
+    }
+  ]
+}

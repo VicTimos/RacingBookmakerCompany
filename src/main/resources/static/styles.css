@@ -1,0 +1,92 @@
+.left-navbar {
+    background-color: #FFC75B;
+    height: 100%;
+    width: 100%;
+}
+
+.first-color {
+    background-color: #FFBC39;
+}
+
+.second-color {
+    background-color: #FFC75B;
+}
+
+.nav-button {
+    padding: 10px;
+    background-color: #FFA800;
+    color: black;
+}
+
+.nav-button:hover {
+    padding: 10px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.nav-button-clicked {
+    background-color: #FFA800;
+    color: white;
+    cursor: pointer;
+}
+
+.data-card {
+    background-color: #FFBC39;
+    padding: 20px;
+}
+
+.data-card:hover {
+    background-color: rgba(255, 188, 57, 0.5);
+    cursor: pointer;
+    box-shadow: 10px 10px 5px grey;
+}
+
+.center-content {
+    margin-left: auto;
+    margin-right: auto;
+    height: 75%;
+}
+
+.partition-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.partition-25 {
+    flex: 0 0 25%;
+    padding: 10px;
+}
+
+.partition-50 {
+    flex: 0 0 50%;
+    padding: 10px;
+}
+
+.partition-75 {
+    flex: 0 0 75%;
+    padding: 10px;
+}
+
+.partition-block {
+    padding: 10px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.plus-button {
+    height: 100%;
+    background: url("images/plus.svg") no-repeat center;
+}
+
+.plus-button:hover {
+    height: 100%;
+    cursor: pointer;
+    background: url("images/plus-hover.svg") no-repeat center;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
